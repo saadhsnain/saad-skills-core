@@ -1,0 +1,8 @@
+# Private canonical allowlist for the public saad-skills-core publish mirror.
+# One skill directory name per line. Do not add a private skill here unless it
+# is intentionally safe to publish.
+dev-research
+fable-prep
+harry-dry-copywriting
+question-map
+model-handoff
