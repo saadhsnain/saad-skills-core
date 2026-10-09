@@ -1,6 +1,8 @@
 ---
-name: dev-research
-description: Generate a structured Perplexity Deep Research prompt for a technical/coding question — grounded in project context and session findings. Adapts to three modes: Library (comparing/choosing tools), Architecture (design decisions), and Debug (root-cause investigations). Always includes a cross-domain collision layer to escape the obvious technical literature.
+description: |-
+  Generate a structured Perplexity Deep Research prompt for a technical/coding question — grounded in project context and session findings. Adapts to three modes: Library (comparing/choosing tools), Architecture (design decisions), and Debug (root-cause investigations). Always includes a cross-domain collision layer to escape the obvious technical literature.
+notion_page_id: 3f1c4982-f61e-815e-85ee-fa3ddf8e1741
+name: "dev-research"
 ---
 
 # Dev Research
@@ -11,17 +13,19 @@ Generate a Perplexity Deep Research prompt calibrated for a specific technical q
 2. **Collision layer** — find structural mechanisms from distant domains that apply to the problem (escaping "just read the docs" territory)
 
 Automatically detects mode from the question:
+
 - **Library mode** — choosing or comparing tools/libraries/services
 - **Architecture mode** — design decisions, patterns, system structure
 - **Debug mode** — root-cause investigation, failure analysis
 
 ## Usage
 
-```
+```javascript
 /dev-research <question or problem>
 ```
 
 Examples:
+
 - `/dev-research which state management approach for this React app` ← Library
 - `/dev-research how to structure multi-tenant data isolation in Postgres` ← Architecture
 - `/dev-research why React Query cache invalidation isn't firing after mutation` ← Debug
@@ -35,6 +39,7 @@ Examples:
 Read what's already known about the problem:
 
 **From the project:**
+
 ```bash
 # If in a project directory — read README for stack/constraints
 cat README.md 2>/dev/null | head -80
@@ -45,6 +50,7 @@ cat package.json 2>/dev/null | python3 -c "import sys,json; d=json.load(sys.stdi
 **From the current session:** Review what was already tried, errors seen, approaches rejected.
 
 **Infer the mode** from the question type:
+
 - "which X vs Y", "should I use", "best way to" → **Library mode**
 - "how to structure", "pattern for", "design for" → **Architecture mode**
 - "why isn't", "broken", "not working", error messages → **Debug mode**
@@ -71,7 +77,7 @@ Output the prompt directly — formatted for copy-paste into Perplexity Deep Res
 
 #### Library Mode prompt:
 
-```
+```javascript
 RESEARCH BRIEF: <decision question>
 
 ## Stack context
@@ -125,7 +131,7 @@ I want to escape "just compare the benchmarks" territory. Find structural mechan
 
 #### Architecture Mode prompt:
 
-```
+```javascript
 RESEARCH BRIEF: <architecture problem>
 
 ## Context
@@ -178,7 +184,7 @@ Before I read the standard software architecture literature on this, I want stru
 
 #### Debug Mode prompt:
 
-```
+```javascript
 RESEARCH BRIEF: <bug or failure description>
 
 ## Environment
@@ -243,6 +249,7 @@ Debugging is diagnosis under uncertainty. Find structural parallels from other d
 ### 4 — Report
 
 After outputting the prompt:
+
 - State which mode was used and why
 - Name the strongest assumption it will test
 - Name the collision domain it will push Perplexity toward
