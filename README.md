@@ -23,8 +23,8 @@ Install **both `fable-prep` and `model-handoff` as siblings** when using the ali
 Edit and verify these sources here. The private hub's `PUBLISHED_SKILLS` is Saad's runtime/distribution allowlist; the copy here must agree. On the originating Mac:
 
 ```sh
-~/tailgate/cadastre/cadastre skills check
-~/tailgate/cadastre/cadastre skills publish
+~/code/personal-infra/cadastre/cadastre skills check
+~/code/personal-infra/cadastre/cadastre skills publish
 ```
 
 The checks do not publish remotely. `publish --apply` skips these public-owned sources and preserves unexpected public packages with an error. Keep private paths, policy and personal context in private adapters.
